@@ -47,3 +47,16 @@ class Basic :
             print(harm_num)
             count -= 1
             den += 1
+
+#Find prime factor of a number
+    def primeFactors(self,num):
+            while num%2 == 0 :
+                print("2")
+                num = num/2
+
+            for i in range(3,int(num/2),2):
+                while num%i == 0 :
+                    print(i)
+                    num = num/i
+            if num > 1 :
+                print(num)
