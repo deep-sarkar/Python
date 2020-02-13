@@ -37,3 +37,13 @@ class Basic :
             out_num = out_num * 2
             print(out_num)
             num = num / 2
+
+#Harmonic number generator method
+    def harmonicValue(self,count):
+        den = 1
+        harm_num = 0
+        while count > 0 :
+            harm_num = harm_num + 1/den
+            print(harm_num)
+            count -= 1
+            den += 1
