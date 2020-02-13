@@ -1,5 +1,5 @@
 import random
-class Basic:
+class Basic :
 #check leapyear method 
     def is_leapyear(self,year) :
         if year >= 999 and year <= 9999 :
@@ -10,6 +10,7 @@ class Basic:
                 print("Not a leap year")
         else :
             print("Invalid input")
+
 #coin flip method
     def flipCoin(self,toss):
         head = 0
