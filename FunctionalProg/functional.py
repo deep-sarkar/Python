@@ -27,3 +27,8 @@ class Functional:
                     if array[i] + array[j] + array[k] == 0 :
                         print(array[i] , array[j], array[k])
                 
+#Find euclidean distance
+    def find_distance(self):
+        x = float(input('Enter x value : '))
+        y = float(input('Enter y value : '))
+        return (x*x + y*y)**0.5
