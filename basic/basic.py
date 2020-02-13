@@ -29,3 +29,11 @@ class Basic :
         head_per = "{:.2f}".format(head*100/total)
         tail_per = "{:.2f}".format(tail*100/total)
         print('head% : ' , head_per ,' $ tail% : ', tail_per)
+
+#Power of 2 method
+    def table(self,num):
+        out_num = 1
+        while num >= 2 :
+            out_num = out_num * 2
+            print(out_num)
+            num = num / 2
