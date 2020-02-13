@@ -32,3 +32,16 @@ class Functional:
         x = float(input('Enter x value : '))
         y = float(input('Enter y value : '))
         return (x*x + y*y)**0.5
+
+#To find root of quadratic equation
+    def solveQuadratic(self):
+        coefficient_a = int(input('Enter coefficient of x^2 : '))
+        coefficient_b = int(input('Enter coefficient of x : '))
+        constant = int(input('Enter constant value : '))
+        delta = coefficient_b*coefficient_b - 4 * coefficient_a * constant
+        if delta < 0:
+            print('Root not possible')
+        else :
+            root1 = -1*coefficient_b - (delta/(2*coefficient_a))**0.5
+            root2 = -1*coefficient_b + (delta/(2*coefficient_a))**0.5
+            print('Root 1 : %.2f' %(root1) , 'Root 2 : %.2f' %(root2))    
