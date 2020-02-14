@@ -45,3 +45,9 @@ class Functional:
             root1 = -1*coefficient_b - (delta/(2*coefficient_a))**0.5
             root2 = -1*coefficient_b + (delta/(2*coefficient_a))**0.5
             print('Root 1 : %.2f' %(root1) , 'Root 2 : %.2f' %(root2))    
+
+#wind chill method
+    def relative_temperature(self):
+        temperature = float(input('Enter Temperature in Fahernheit : '))
+        velocity = float(input('Enter wind velocity in miles/hr : '))
+        return 35.74 + 0.6215*temperature + ( 0.4275 * temperature - 35.75) * velocity**0.16
