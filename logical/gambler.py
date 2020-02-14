@@ -1,8 +1,10 @@
 from logical import *
 class GamblerGame:
+    stake = int(input('Enter stake amount : '))
+    goal = int(input('Enter goal amount : '))
+    number_of_time = int(input('Enter how many time you want to bet : '))
     gambler = LogicalMethods()
-    gambler.gamble()
-    number_of_bet = gambler.win + gambler.loss
-    print('Total win : ',gambler.win,' Total loss : ' , gambler.loss)
-    print('win% : ',gambler.win*100/number_of_bet)
-    print('loss% : ',gambler.loss*100/number_of_bet)
+    
+    #Passing argument for gambler method
+    gambler.gamble(stake,goal,number_of_time)
+    
