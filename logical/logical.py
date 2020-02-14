@@ -1,6 +1,6 @@
 import random
 class LogicalMethods:
-
+    
 #Gambler game method
     def gamble(self,stake,goal,number_of_time):
         win = 0
