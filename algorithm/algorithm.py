@@ -96,3 +96,16 @@ class AlgorithmMethods:
                 print(number)
                 count += 1
         print('Total : ',count)
+
+#Permutation of string
+    def toString(self,array):
+        return ''.join(array)
+        
+    def permute(self,array,low,high):
+        if low == high :
+            print(self.toString(array))
+        else :
+            for i in range(low, high + 1):
+                array[low],array[i] = array[i],array[low]
+                self.permute(array, low + 1, high)
+                array[low],array[i] = array[i],array[low]
