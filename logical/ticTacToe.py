@@ -40,7 +40,7 @@ class TicTacToe:
             for j in range(3):
                 if cls.board[i][j] == "X" : #Row win condition
                     row += 1
-                if cls.board[i][j] == "X" : #column win condition
+                if cls.board[j][i] == "X" : #column win condition
                     column += 1
                 if i == j and cls.board[i][j] == "X" : #Primary diagonal win condition
                     primary_doiagonal += 1
@@ -62,7 +62,7 @@ class TicTacToe:
             for j in range(3):
                 if cls.board[i][j] == "O" : #Row win condition
                     row += 1
-                if cls.board[i][j] == "O" : #column win condition
+                if cls.board[j][i] == "O" : #column win condition
                     column += 1
                 if i == j and cls.board[i][j] == "O" : #Primary diagonal win condition
                     primary_doiagonal += 1
@@ -72,8 +72,6 @@ class TicTacToe:
                 return 1
         if secondary_diaggonal == 3 or primary_doiagonal == 3 :
             return 1
-
-
 
 tictack = TicTacToe()
 tictack.print_board()
