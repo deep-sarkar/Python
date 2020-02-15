@@ -77,3 +77,22 @@ class AlgorithmMethods:
             self.mergeSort(arr, low, mid)       #Sort 1st half
             self.mergeSort(arr, mid+1, high)    #Sort 2nd half
             self.merge(arr, low, mid, high)     #merge
+
+#Prime number
+    #Check prime
+    def is_prime(self,num):
+        n = 2
+        while n < num//2 :
+            if num % n == 0 :
+                return False
+            n += 1
+        return True
+    
+    #generate prime in a range
+    def prime_in_range(self,low,high):
+        count = 0
+        for number in range(low,high):
+            if self.is_prime(number):
+                print(number)
+                count += 1
+        print('Total : ',count)
