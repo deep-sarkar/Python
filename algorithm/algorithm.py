@@ -22,3 +22,11 @@ class AlgorithmMethods:
                 array[j+1] = array[j]
                 j -= 1
             array[j+1] = temp
+
+#Bubble sort method
+    def bubble_sort(self,array):
+        length = len(array)
+        for i in range(length):
+            for j in range(length):
+                if array[j] > array[i]:
+                    array[i],array[j] = array[j],array[i]
