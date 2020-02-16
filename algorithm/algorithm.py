@@ -1,3 +1,4 @@
+import string
 class AlgorithmMethods:
 
 #Binary search method
@@ -109,3 +110,18 @@ class AlgorithmMethods:
                 array[low],array[i] = array[i],array[low]
                 self.permute(array, low + 1, high)
                 array[low],array[i] = array[i],array[low]
+
+#Anagran Detection
+    def is_anagram(self,string1,string2):
+        if type(string1) == str and type(string2) == str :
+            str1 = string1.upper()
+            str2 = string2.upper()
+        list1 = list(str1.replace(' ',''))
+        list2 = list(str2.replace(' ',''))
+        if len(list1) != len(list2):
+            return False
+        else :
+            self.bubble_sort(list1)
+            self.bubble_sort(list2)
+            if list1 == list2 :
+                return True
