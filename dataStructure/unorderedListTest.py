@@ -1,4 +1,4 @@
-from utilityUnOrderedList import *
+from utilUnOrderedList import *
 u = UnorderedList()   
 u.pop()     #Popping while list is empty
 u.add(10)  #adding elements in list by default at 1st position
@@ -40,3 +40,5 @@ print('pop With argument',delete)  #popping from perticular index
 u.display()     #Display elements of list
 size = u.size()   #checking size of list after every operation
 print('size : ',size)
+u.remove(78)
+u.display()
