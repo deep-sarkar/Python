@@ -54,7 +54,7 @@ class UnorderedList(object):
                 break
             previous,temp = temp,temp.next
         if previous == None:
-            self.head = head.next
+            self.head = self.head.next
         else:
             previous.next = temp.next
     
