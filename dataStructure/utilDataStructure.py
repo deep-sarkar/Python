@@ -107,3 +107,14 @@ class UtilDataStructure:
             rev = rev*10 + num%10
             num = num//10
         return rev
+    
+    '''
+        - primeAnagram(number) take an integer number as an input and will return if its 
+            anagram number is also prime
+    '''
+    def primeAnagram(self,number):
+        if self.is_prime(number):
+            rev = self.reverse_num(number)
+            if self.is_prime(rev):
+                return True
+        return False
