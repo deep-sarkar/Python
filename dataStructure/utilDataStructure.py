@@ -72,3 +72,38 @@ class UtilDataStructure:
                     upper_range += 100
                     ar.append(li)
         return ar
+    
+    '''
+        -to_primeAnagramArray() takes no argument and wil return 2d array 
+        - 1st row elements which are prime and not an anagram
+        -2nd row elements which are anagram and prime
+    '''
+    def to_primeAnagramArray(self,lower_range,upper_range):
+        anagram_array = ['Anagram array']
+        normal_array = ['Normal array']
+        array = []
+        if lower_range < 2:
+            lower_range = 2
+        for i in range(lower_range,upper_range):
+            if i < 11:
+                if self.is_prime(i):
+                    normal_array.append(i)
+            else:
+                if self.is_prime(i):
+                    rev = self.reverse_num(i)
+                    if self.is_prime(rev):
+                        anagram_array.append(i)
+                    else:
+                        normal_array.append(i)
+        array.append(normal_array)
+        array.append(anagram_array)
+        return array
+    '''
+        reverse_num(number) will reverse the number and return it
+    '''
+    def reverse_num(self,num):
+        rev = 0
+        while num > 0:
+            rev = rev*10 + num%10
+            num = num//10
+        return rev
