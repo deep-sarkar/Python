@@ -38,3 +38,15 @@ class UtilDataStructure:
                 print('Wrong input ')
                 return self.read_array()
             return array
+
+    '''
+        - is_prime(number) takes a number as input and will return true if it is prime else 
+        it will return false
+    '''
+    def is_prime(self,num):
+            j = 2
+            while j <= num//2:
+                if num % j == 0:
+                    return False
+                j += 1
+            return True
