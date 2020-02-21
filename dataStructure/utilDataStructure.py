@@ -118,3 +118,22 @@ class UtilDataStructure:
             if self.is_prime(rev):
                 return True
         return False
+    '''
+        - day_of_week(day,month year) takes 3 argument as input and return day on that day in numerical
+            form. ie. 0 = sunday , 6 = saturday
+    '''
+    def day_of_week(self,day,month,year):
+        y1 = year - (14-month)//12
+        x = y1 + y1//4 - y1//100 + y1//400
+        m1 = month + 12 * ((14-month)//12) - 2
+        d1 = (day + x + (31 * m1)//12) % 7
+        return d1
+    '''
+        -is_leapyear(year) method take a year as an input and returns true if year is a leap year
+    '''
+    def is_leapyear(self,year):
+        if year%400 == 0 or year%100 != 0 and year%4 == 0:
+            return True
+        return False
+
+    
