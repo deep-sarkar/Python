@@ -35,6 +35,22 @@ class HashTable:
             return False
         return True    
 
+    def remove(self,value):
+        hash_code = self.hash(value)
+        node = self.bucket[hash_code]
+        prev = None
+        while node is None or node.value != value:
+            prev = node
+            node = node.next
+        if node is None:
+            return "Value not present"
+        else:
+            if prev == None:
+                return "Value not present"
+            else:
+                data = node.value
+                prev.next = prev.next.next
+                return "removed"
 
 h = HashTable()
 data = [12,23,54,68,95,4,7,64,13,97,85,21,66,58]
@@ -50,4 +66,8 @@ print('Find : 100',find)
 find = h.find(66)
 print('Find : 66',find)
 
+remove = h.remove(13)
+print('Remove :',remove)
 
+find = h.find(13)
+print('Find : 13',find)
