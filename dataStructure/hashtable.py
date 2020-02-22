@@ -10,10 +10,17 @@ class HashTable:
         self.size = 11
         self.bucket = [None] * self.size
 
+    '''
+        - hash(value) takes an integer value as an input and return hash code
+    '''
     def hash(self,value):
         hash_code = value%11
         return hash_code
-    
+
+    '''
+        -insert(value) takes integer value as an input and add it in a node according to position of
+            hash code
+    '''
     def insert(self,value):
         hash_code = self.hash(value)
         node = self.bucket[hash_code]
@@ -26,6 +33,9 @@ class HashTable:
             node = node.next
         prev.next = Node(hash_code,value)
     
+    '''
+        -find(value) takes integer as an input and search it in table according to its hashcode
+    '''
     def find(self,value):
         hash_code = self.hash(value)
         node = self.bucket[hash_code]
@@ -35,6 +45,9 @@ class HashTable:
             return False
         return True    
 
+    '''
+        remove(value) method is used to remove any value ffrom hash table
+    '''
     def remove(self,value):
         hash_code = self.hash(value)
         node = self.bucket[hash_code]
