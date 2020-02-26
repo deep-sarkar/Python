@@ -100,16 +100,16 @@ class AddressBook:
             json.dump(self.address_book,json_file,indent=2)
     
     '''
-        -delete(self,name) method taking name as an argument and will delete perticular name
+        -delete(self,first_name) method taking first_name and Last_name as an argument and will delete perticular name
             contact
     '''
-    def delete(self,name):
+    def delete(self,first_name,Last_name):
         index = 0
         try:
             with open(self.path,'r') as json_file:
                 self.address_book = json.load(json_file)
             for element in self.address_book['contact']:
-                if element['First_name'] == name:
+                if element['First_name'] == first_name and element['Last_name']:
                     print(element)
                     self.address_book['contact'].pop(index)
                 index += 1
