@@ -74,12 +74,24 @@ class AddressBook:
                 print(count,'.',element['First_name'])
                 count += 1
         except json.decoder.JSONDecodeError:
-            print('Book is empty')        
+            print('Book is empty')      
+
+    def displayContactDetail(self,name):  
+        try:
+            with open('address.json','r') as json_file:
+                self.address_book = json.load(json_file)
+            for element in self.address_book['contact']:
+                if element['First_name'] == name:
+                    print(element['First_name'])
+                    for contact,detail in element.items():
+                        print(contact,':',detail)
+        except json.decoder.JSONDecodeError:
+            print('Book is empty')      
 
 
 a = AddressBook()
 while True:
-    print('\n1.add \n2.delete \n3.display all contact by name')
+    print('\n1.add \n2.delete \n3.display all contact by name \n4.display detail of a contact')
     user_input = int(input('eneter your choice : '))
     if user_input == 1:
         a.addToJson()
@@ -88,6 +100,9 @@ while True:
         a.delete(name)
     if user_input == 3:
         a.displayContactName()
+    if user_input == 4:
+        name = input('Enter 1st name : ')
+        a.displayContactDetail(name)
 
 
 # while True:
