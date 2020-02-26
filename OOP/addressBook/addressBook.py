@@ -1,12 +1,49 @@
 import json
 import re
 import operator
-
+import os.path
 
 class AddressBook:
     def __init__(self):
         self.address_book = {"contact" : []}
         self.path = 'addressBook/address.json'
+
+    '''
+        -create(self) when method will called, it will create a new file.
+    '''
+    def create(self):
+        try:
+            file_name = input('Enter file name : ')
+            file_name = file_name+'.json'
+            if os.path.isfile(file_name):
+                print ("File exist")
+                return self.create()
+            else :
+                file_name1 = 'addressBook/'+file_name
+                new_book = open(file_name1,'w+')
+                new_book.close()
+        except IOError:
+            print('File not found')
+    
+    '''
+        -open(self) method will open an existing file from directory
+    '''
+    def open(self):
+        file_name = input('Enter file name : ')
+        file_name = file_name+'.json'
+        try:
+            file_name1 = 'addressBook/'+file_name
+            with open(file_name1) as my_file:
+                self.address_book = json.load(my_file)
+            self.path = file_name1
+            print(self.path)
+        except IOError:
+            print('File not found')
+        except json.decoder.JSONDecodeError:
+            print('New file opened')
+            self.path = file_name1
+            print(self.path)
+    
 
     def addNew(self):
         flag = True
@@ -31,6 +68,7 @@ class AddressBook:
                 detail['Mobile_no'] = int(mobile_number)
             else :
                 print('Invalid mobile number, please enter again')
+        detail['city'] = input('city : ')
         detail['state'] = input('state : ')
         while flag1:
             zip_code = input('ZIP code : ')
