@@ -1,9 +1,13 @@
 import json
 import re
+import operator
+
+
 class AddressBook:
     def __init__(self):
         self.address_book = {"contact" : []}
-        
+        self.path = 'addressBook/address.json'
+
     def addNew(self):
         flag = True
         flag1 = True
@@ -11,7 +15,7 @@ class AddressBook:
         detail['First_name'] = input('name : ')
         detail['Last_name'] = input('Last name : ')
         try:
-            with open('address.json','r') as json_file:
+            with open(self.path,'r') as json_file:
                 data = json.load(json_file)
             for person in data['contact']:
                 if detail['First_name'] == person['First_name'] and detail['Last_name'] == person['Last_name']:
@@ -40,20 +44,20 @@ class AddressBook:
 
     def addToJson(self):
         try:
-            with open('address.json','r') as json_file:
+            with open(self.path,'r') as json_file:
                 self.address_book = json.load(json_file)
-            detail = a.addNew()
+            detail = self.addNew()
             self.address_book['contact'].append(detail)
         except json.decoder.JSONDecodeError:
-            detail = a.addNew()
+            detail = self.addNew()
             self.address_book['contact'].append(detail)
-        with open('address.json','w') as json_file:
+        with open(self.path,'w') as json_file:
             json.dump(self.address_book,json_file,indent=2)
        
     def delete(self,name):
         index = 0
         try:
-            with open('address.json','r') as json_file:
+            with open(self.path,'r') as json_file:
                 self.address_book = json.load(json_file)
             for element in self.address_book['contact']:
                 if element['First_name'] == name:
@@ -62,13 +66,13 @@ class AddressBook:
                 index += 1
         except json.decoder.JSONDecodeError:
             print('Book is empty')
-        with open('address.json','w') as json_file:
+        with open(self.path,'w') as json_file:
             json.dump(self.address_book,json_file,indent=2)
 
     def displayContactName(self):
         count = 1
         try:
-            with open('address.json','r') as json_file:
+            with open(self.path,'r') as json_file:
                 self.address_book = json.load(json_file)
             for element in self.address_book['contact']:
                 print(count,'.',element['First_name'])
@@ -90,7 +94,7 @@ class AddressBook:
 
     def editContact(self,name):
         try:
-            with open('address.json','r') as json_file:
+            with open(self.path,'r') as json_file:
                     self.address_book = json.load(json_file)
             for element in self.address_book['contact']:
                 if element['First_name'] != name:
@@ -134,32 +138,43 @@ class AddressBook:
                                 print('Invalid zip code, please enter again')
         except json.decoder.JSONDecodeError:
             print('Book is empty')      
-        with open('address.json','w') as json_file:
+        with open(self.path,'w') as json_file:
             json.dump(self.address_book,json_file,indent=2)
+    
+    def sortByZIP(self):
+        count = 1
+        try:
+            with open(self.path,'r') as json_file:
+                self.address_book = json.load(json_file)
+                self.address_book['contact'].sort(key=operator.itemgetter('zip_code'))
+            for element in self.address_book['contact']:
+                print(count,'.',element['First_name'])
+                count += 1
+        except json.decoder.JSONDecodeError:
+            print('Book is empty')  
 
+    def sortByName(self):
+        count = 1
+        try:
+            with open(self.path,'r') as json_file:
+                self.address_book = json.load(json_file)
+                self.address_book['contact'].sort(key=operator.itemgetter('First_name'))
+            for element in self.address_book['contact']:
+                print(count,'.',element['First_name'])
+                count += 1
+        except json.decoder.JSONDecodeError:
+            print('Book is empty')  
+    
+    def displayAll(self):
+        try:
+            with open('address.json','r') as json_file:
+                self.address_book = json.load(json_file)
+            for element in self.address_book['contact']:
+                if element['First_name'] == name:
+                    print(element['First_name'])
+                    for contact,detail in element.items():
+                        print(contact,':',detail)
+        except json.decoder.JSONDecodeError:
+            print('Book is empty')      
 
-a = AddressBook()
-flag = True
-while flag:
-    print('\n1.add \n2.delete \n3.display all name \n4.display detail \n5.edit \n6.Exit')
-    try:
-        user_input = int(input('eneter your choice : '))
-    except ValueError :
-        print('Try again')
-        flag = True
-    if user_input == 1:
-        a.addToJson()
-    if user_input == 2:
-        name = input('Enter first name : ')
-        a.delete(name)
-    if user_input == 3:
-        a.displayContactName()
-    if user_input == 4:
-        name = input('Enter 1st name : ')
-        a.displayContactDetail(name)
-    if user_input == 5:
-         name = input('Enter 1st name : ')
-         a.editContact(name)
-    if user_input == 6:
-        flag = False
 
