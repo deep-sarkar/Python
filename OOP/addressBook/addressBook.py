@@ -44,7 +44,10 @@ class AddressBook:
             self.path = file_name1
             print(self.path)
     
-
+    '''
+        -addNew(self) method woll collect all information from user and return it in 
+            the form of dictionary object
+    '''
     def addNew(self):
         flag = True
         flag1 = True
@@ -80,6 +83,10 @@ class AddressBook:
                 print('Invalid zip code, please enter again')
         return detail
 
+    '''
+        -addToJson(self) method internally calling addNew(self) method and saving detail in opened
+            file
+    '''
     def addToJson(self):
         try:
             with open(self.path,'r') as json_file:
@@ -91,7 +98,11 @@ class AddressBook:
             self.address_book['contact'].append(detail)
         with open(self.path,'w') as json_file:
             json.dump(self.address_book,json_file,indent=2)
-       
+    
+    '''
+        -delete(self,name) method taking name as an argument and will delete perticular name
+            contact
+    '''
     def delete(self,name):
         index = 0
         try:
@@ -107,6 +118,9 @@ class AddressBook:
         with open(self.path,'w') as json_file:
             json.dump(self.address_book,json_file,indent=2)
 
+    '''
+        -displayContactName(self) method will display all saved contacts first name
+    '''
     def displayContactName(self):
         count = 1
         try:
@@ -118,6 +132,10 @@ class AddressBook:
         except json.decoder.JSONDecodeError:
             print('Book is empty')      
 
+    '''
+        -displayContactDetail(self,name) take name as input and will display all details the details
+            of perticular contact
+    '''
     def displayContactDetail(self,name):  
         try:
             with open('address.json','r') as json_file:
@@ -130,6 +148,10 @@ class AddressBook:
         except json.decoder.JSONDecodeError:
             print('Book is empty')      
 
+    '''
+        -editContact(self,name) method is taking 1 argument as name and if contact is there
+            it will allow to modify it
+    '''
     def editContact(self,name):
         try:
             with open(self.path,'r') as json_file:
@@ -179,6 +201,9 @@ class AddressBook:
         with open(self.path,'w') as json_file:
             json.dump(self.address_book,json_file,indent=2)
     
+    '''
+        -sortByZIP(self) method will display contacts by sortin them according to zip code
+    '''
     def sortByZIP(self):
         count = 1
         try:
@@ -191,6 +216,9 @@ class AddressBook:
         except json.decoder.JSONDecodeError:
             print('Book is empty')  
 
+    '''
+        -sortByName(self) will sort all the contacts according to first name
+    '''
     def sortByName(self):
         count = 1
         try:
@@ -205,13 +233,11 @@ class AddressBook:
     
     def displayAll(self):
         try:
-            with open('address.json','r') as json_file:
+            with open(self.path,'r') as json_file:
                 self.address_book = json.load(json_file)
             for element in self.address_book['contact']:
-                if element['First_name'] == name:
-                    print(element['First_name'])
-                    for contact,detail in element.items():
-                        print(contact,':',detail)
+                for contact,detail in element.items():
+                    print(contact,':',detail)
         except json.decoder.JSONDecodeError:
             print('Book is empty')      
 
