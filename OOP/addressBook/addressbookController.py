@@ -21,8 +21,9 @@ class userAddressBook:
                 if user_input == 1:
                     new_addressBook.addToJson()
                 if user_input == 2:
-                    name = input('Enter first name : ')
-                    new_addressBook.delete(name)
+                    first_name = input('Enter first name : ')
+                    last_name = input('Enter last name : ')
+                    new_addressBook.delete(first_name,last_name)
                 if user_input == 3:
                     new_addressBook.displayContactName()
                 if user_input == 4:
