@@ -12,7 +12,7 @@ class userAddressBook:
             new_addressBook.open()
             while True:
                 print('''\n1.add \n2.delete \n3.display all name \n4.display detail \n5.edit \n6.Sort by Zip
-                \n7.Sort by name \n8.Quit''')
+                \n7.Sort by name \n8.Display all contacts \n9.Quit''')
                 try:
                     user_input = int(input('eneter your choice : '))
                 except ValueError :
@@ -36,6 +36,8 @@ class userAddressBook:
                 if user_input == 7:
                     new_addressBook.sortByName()
                 if user_input == 8:
+                    new_addressBook.displayAll()
+                if user_input == 9:
                     break
         if user_input == 2:
             new_addressBook.create()
