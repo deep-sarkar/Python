@@ -1,0 +1,19 @@
+{
+  "details": [
+    {
+      "Type": "Rice",
+      "Weight": 45.0,
+      "Price_per_kg": 45.0
+    },
+    {
+      "Type": "wheat",
+      "Weight": 44.5,
+      "Price_per_kg": 45.63
+    },
+    {
+      "Type": "maze",
+      "Weight": 12.0,
+      "Price_per_kg": 16.0
+    }
+  ]
+}
