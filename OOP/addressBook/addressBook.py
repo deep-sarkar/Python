@@ -160,13 +160,18 @@ class AddressBook(person.Person):
         except json.decoder.JSONDecodeError:
             print('Book is empty')  
     
+    '''
+        displayAll(self) method will show all the contact present in the opened book
+    '''
     def displayAll(self):
         try:
             with open(self.path,'r') as json_file:
                 self.address_book = json.load(json_file)
             for element in self.address_book['contact']:
+                print('----',element['First_name'],'----')
                 for contact,detail in element.items():
                     print(contact,':',detail)
+                print()
         except json.decoder.JSONDecodeError:
             print('Book is empty')      
 
