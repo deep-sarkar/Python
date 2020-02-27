@@ -1,20 +1,13 @@
 {
-  "contact": [
+  "people": [
     {
       "First_name": "Deep",
       "Last_name": "Sarkar",
       "Mobile_no": 7023536113,
-      "city": "Blr",
-      "state": "KA",
-      "zip_code": 552255
-    },
-    {
-      "First_name": "diba",
-      "Last_name": "sarkar",
-      "Mobile_no": 7777777777,
-      "city": "ambala",
-      "state": "haryana",
-      "zip_code": 777777
+      "address": "7/9 gaur city",
+      "city": "Greater Noida",
+      "state": "UP",
+      "zip_code": 775686
     }
   ]
 }
