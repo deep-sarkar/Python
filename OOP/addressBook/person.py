@@ -28,6 +28,7 @@ class Person:
                 detail['Mobile_no'] = int(mobile_number)
             else :
                 print('Invalid mobile number, please enter again')
+        detail['address'] = input('address : ')
         detail['city'] = input('city : ')
         detail['state'] = input('state : ')
         while flag1:
