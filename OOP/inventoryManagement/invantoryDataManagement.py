@@ -37,28 +37,6 @@ class InventoryDataManagement:
         with open(self.path,'w') as json_file:
             json.dump(self.inventory,json_file,indent = 2)
     
-    def displayAllInventory(self):
-        try:
-            with open(self.path,'r') as json_file:
-                self.inventory = json.load(json_file)
-            for element in self.inventory['details']:
-                print('----',element['Type'],'----')
-                for item,detail in element.items():
-                    print(item,':',detail)
-        except json.decoder.JSONDecodeError:
-            print('Inventory is empty!!!')
-    
-    def displayPerticularInventory(self,item):
-        try:
-            with open(self.path,'r') as json_file:
-                self.inventory = json.load(json_file)
-            for element in self.inventory['details']:
-                if element['Type'] == item:
-                    for item, detail in element.items():
-                        print(item,':',detail)
-        except json.decoder.JSONDecodeError:
-            print('Inventory is empty!!!')
-    
     def deleteItem(self,item):
         index = 0
         try:
@@ -73,7 +51,19 @@ class InventoryDataManagement:
         with open(self.path,'w') as json_file:
             json.dump(self.inventory,json_file,indent= 2)
     
+    def displayAllInventory(self):
+        try:
+            with open(self.path,'r') as json_file:
+                self.inventory = json.load(json_file)
+            for element in self.inventory['details']:
+                print('----',element['Type'],'----')
+                for item,detail in element.items():
+                    print(item,':',detail)
+        except json.decoder.JSONDecodeError:
+            print('Inventory is empty!!!')
+
     def displayValue(self):
+        total_value_of_inventory = 0
         try:
             with open(self.path,'r') as json_file:
                 self.inventory = json.load(json_file)
@@ -81,8 +71,11 @@ class InventoryDataManagement:
                 print('----',element['Type'],'----')
                 total_weight = float(element['Weight'])
                 value_per_kg = float(element['Price_per_kg'])
+                total_value = total_weight*value_per_kg
+                total_value_of_inventory += total_value
                 print('total_weight :',total_weight)
                 print('value_per_kg :',value_per_kg)
-                print('Total Value :',total_weight*value_per_kg)
+                print('Total Value :',total_value)
+            print('total value of inventory : ',total_value_of_inventory)
         except json.decoder.JSONDecodeError:
             print('Inventory is empty !!!')
