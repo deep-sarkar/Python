@@ -44,14 +44,20 @@ class Card:
 # main method
 if __name__ == "__main__":
     my_deck = Card()
-    try:
-        number_of_cards = int(input('Total card : '))
-        number_of_players = int(input('Total players : '))
-    except ValueError:
-        print('Please enter proper number format')
-    deck = my_deck.distribute(number_of_cards,number_of_players)
-    for row in deck:
-        print(row)
+    while True:
+        try:
+            number_of_cards = int(input('Total card : '))
+            number_of_players = int(input('Total players : '))
+            if number_of_cards < 1 > number_of_players or number_of_cards > 52:
+                print('Please enter proper value ')
+                continue
+        except ValueError:
+            print('Please enter proper number format')
+            continue
+        deck = my_deck.distribute(number_of_cards,number_of_players)
+        for row in deck:
+            print(row)
+        break
 
 
-                    
+                        
