@@ -1,19 +1,28 @@
 {
-  "details": [
+  "rice": [
     {
-      "Type": "Rice",
+      "Type": "basmati",
+      "Weight": 14.0,
+      "Price_per_kg": 120.0
+    }
+  ],
+  "pulses": [
+    {
+      "Type": "type A",
       "Weight": 45.0,
-      "Price_per_kg": 45.0
+      "Price_per_kg": 13.0
+    }
+  ],
+  "wheat": [
+    {
+      "Type": "type c",
+      "Weight": 54.0,
+      "Price_per_kg": 23.0
     },
     {
-      "Type": "wheat",
-      "Weight": 44.5,
-      "Price_per_kg": 45.63
-    },
-    {
-      "Type": "maze",
-      "Weight": 12.0,
-      "Price_per_kg": 16.0
+      "Type": "type c",
+      "Weight": 45.0,
+      "Price_per_kg": 12.0
     }
   ]
 }

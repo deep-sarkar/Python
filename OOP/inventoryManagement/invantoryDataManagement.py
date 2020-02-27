@@ -2,7 +2,7 @@ import json
 
 class InventoryDataManagement:
     def __init__(self):
-        self.inventory = {'details' : []}
+        self.inventory = {'rice':[],'pulses':[],'wheat':[]}
         self.path = 'inventoryManagement/invantoryData.json'
     
     def add(self):
@@ -25,49 +25,49 @@ class InventoryDataManagement:
             flag = False
         return goods
     
-    def addToInventoryData(self):
+    def addToInventoryData(self,item_type):
         try:
             with open(self.path,'r') as json_file:
                 self.inventory = json.load(json_file)
             inventory_data = self.add()
-            self.inventory['details'].append(inventory_data)
+            self.inventory[item_type].append(inventory_data)
         except json.decoder.JSONDecodeError:
             inventory_data = self.add()
-            self.inventory['details'].append(inventory_data)
+            self.inventory[item_type].append(inventory_data)
         with open(self.path,'w') as json_file:
             json.dump(self.inventory,json_file,indent = 2)
     
-    def deleteItem(self,item):
+    def deleteItem(self,item_type,item):
         index = 0
         try:
             with open(self.path,'r') as json_file:
                 self.inventory = json.load(json_file)
-            for element in self.inventory['details']:
+            for element in self.inventory[item_type]:
                 if element['Type'] == item:
-                    self.inventory['details'].pop(index)
+                    self.inventory[item_type].pop(index)
                 index += 1
         except json.decoder.JSONDecodeError:
             print('Inventory is empty')
         with open(self.path,'w') as json_file:
             json.dump(self.inventory,json_file,indent= 2)
     
-    def displayAllInventory(self):
+    def displayAllInventory(self,item_type):
         try:
             with open(self.path,'r') as json_file:
                 self.inventory = json.load(json_file)
-            for element in self.inventory['details']:
+            for element in self.inventory[item_type]:
                 print('----',element['Type'],'----')
                 for item,detail in element.items():
                     print(item,':',detail)
         except json.decoder.JSONDecodeError:
             print('Inventory is empty!!!')
 
-    def displayValue(self):
+    def displayValue(self,item_type):
         total_value_of_inventory = 0
         try:
             with open(self.path,'r') as json_file:
                 self.inventory = json.load(json_file)
-            for element in self.inventory['details']:
+            for element in self.inventory[item_type]:
                 print('----',element['Type'],'----')
                 total_weight = float(element['Weight'])
                 value_per_kg = float(element['Price_per_kg'])
