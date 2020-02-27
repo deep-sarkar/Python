@@ -10,6 +10,22 @@ class AddressBook(person.Person):
         self.path = 'addressBook/address.json'
 
     '''
+        -addToJson(self) method internally calling addNew(self) method and saving detail in opened
+            file
+    '''
+    def addToJson(self):
+        try:
+            with open(self.path,'r') as json_file:
+                self.address_book = json.load(json_file)
+            detail = self.addNew()
+            self.address_book['contact'].append(detail)
+        except json.decoder.JSONDecodeError:
+            detail = self.addNew()
+            self.address_book['contact'].append(detail)
+        with open(self.path,'w') as json_file:
+            json.dump(self.address_book,json_file,indent=2)
+
+    '''
         -open(self) method will open an existing file from directory
     '''
     def open(self):
