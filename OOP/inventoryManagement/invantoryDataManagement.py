@@ -9,15 +9,6 @@ class InventoryDataManagement:
         flag = True
         goods = {}
         goods['Type'] = input('Enter item name : ')
-        try:
-            with open(self.path,'r') as json_file:
-                self.inventory = json.load(json_file)
-            for item in self.inventory['details']:
-                if goods['Type'] in item['Type']:
-                    print('Item with this name is already present , please try again')
-                    return self.add()
-        except json.decoder.JSONDecodeError:
-            print('First element is adding to enventory')
         while flag:
             try:
                 weight = float(input('Enter quantity (weight) : '))
