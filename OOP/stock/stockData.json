@@ -1,0 +1,28 @@
+{
+  "CompanyShares": [
+    {
+      "stock_name": "bata",
+      "number_of_share": 45.0,
+      "price_per_share": 7888.0,
+      "transaction_time": "2020-02-27 13:32:30.697922"
+    },
+    {
+      "stock_name": "godrez",
+      "number_of_share": 45.0,
+      "price_per_share": 2113.0,
+      "transaction_time": "2020-02-27 12:13:07.071209"
+    },
+    {
+      "stock_name": "honda",
+      "number_of_share": 456.0,
+      "price_per_share": 122.0,
+      "transaction_time": "2020-02-27 12:21:12.511357"
+    },
+    {
+      "stock_name": "maruti",
+      "number_of_share": 545.0,
+      "price_per_share": 478.0,
+      "transaction_time": "2020-02-27 12:55:43.741917"
+    }
+  ]
+}
