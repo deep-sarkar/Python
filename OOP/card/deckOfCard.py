@@ -27,18 +27,22 @@ class Card:
         random.shuffle(deck)
         distribute_card = []
         player_hand = []
+        player = 'player'+' '+str(number_of_players)+':'
+        player_hand.append(player)
         j = 0
         for card in deck:
             player_hand.append(card)
             j += 1
             number_of_cards -= 1
             if j == column :
-                j = 0
+                number_of_players -= 1
+                player = 'player'+' '+str(number_of_players)+':'
                 distribute_card.append(player_hand)
                 player_hand = []
+                player_hand.append(player)
+                j = 0
             if number_of_cards == 0:
                 break
-
         return distribute_card
 
 # main method
