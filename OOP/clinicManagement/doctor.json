@@ -1,0 +1,34 @@
+{
+  "doctor": [
+    {
+      "id": "12",
+      "name": "deep",
+      "specialization": "ortho",
+      "availability": "7am"
+    },
+    {
+      "id": "2",
+      "name": "mohan",
+      "specialization": "skin",
+      "availability": "4pm"
+    },
+    {
+      "id": "34",
+      "name": "ram",
+      "specialization": "child",
+      "availability": "7pm"
+    },
+    {
+      "id": "4",
+      "name": "prateek",
+      "specialization": "ortho",
+      "availability": "9am"
+    },
+    {
+      "id": "5",
+      "name": "santo",
+      "specialization": "women",
+      "availability": "5pm"
+    }
+  ]
+}
