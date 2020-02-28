@@ -5,13 +5,66 @@ from deckOfCard import *
 
 my_queue = QueueUsingLinkedList()
 my_deck = Card()
+
 class DeckUsingQueue:
+    def checkTen(self,temp_array_card):
+        if '10' in temp_array_card:
+            return True
+        return False
+    
+    def checkJack(self,temp_array_card):
+        if 'J ' in temp_array_card:
+            return True
+        return False
+    
+    def checkQueen(self,temp_array_card):
+        if 'Q ' in temp_array_card:
+            return True
+        return False
+    
+    def checkKing(self,temp_array_card):
+        if 'K ' in temp_array_card:
+            return True
+        return False
+    
+    def checkAce(self,temp_array_card):
+        if 'A ' in temp_array_card:
+            return True
+        return False
+
+    def addFaceCardToQueue(self,temp_array_card,temp_array_rank):
+        while self.checkTen(temp_array_card):
+            index = temp_array_card.index('10')
+            temp_array_card.pop(index)
+            my_card = temp_array_rank.pop(index)
+            my_queue.enque(my_card)
+        while self.checkJack(temp_array_card):
+            index = temp_array_card.index('J ')
+            temp_array_card.pop(index)
+            my_card = temp_array_rank.pop(index)
+            my_queue.enque(my_card)
+        while self.checkQueen(temp_array_card):
+            index = temp_array_card.index('Q ')
+            temp_array_card.pop(index)
+            my_card = temp_array_rank.pop(index)
+            my_queue.enque(my_card)
+        while self.checkKing(temp_array_card):
+            index = temp_array_card.index('K ')
+            temp_array_card.pop(index)
+            my_card = temp_array_rank.pop(index) 
+            my_queue.enque(my_card)                
+        while self.checkAce(temp_array_card):
+            index = temp_array_card.index('A ')
+            temp_array_card.pop(index)
+            my_card = temp_array_rank.pop(index)  
+            my_queue.enque(my_card)                 
+
     def addToQueue(self,deck,number_of_players):
-        higher_card = ["10","j","Q","K","A"]
-        player = 'player'+' '+str(number_of_players)+':'
+        higher_card = ["10","J ","Q ","K ","A "]
         for row in deck:
-            temp_array1 = []
-            temp_array2 = []
+            player = 'player'+' '+str(number_of_players)+':'
+            temp_array_card = []
+            temp_array_rank = []
             row.sort()
             for j in range(len(row)):
                 next_card = str(row[j])
@@ -23,24 +76,11 @@ class DeckUsingQueue:
                 elif card not in higher_card:
                     my_queue.enque(next_card)
                 else:
-                    temp_array1.append(card)
-                    temp_array2.append(next_card)
-            if '10' in temp_array1:
-                index = temp_array1.index('10')
-                my_queue.enque(temp_array2[index])
-            if 'J ' in temp_array1:
-                index = temp_array1.index('J ')
-                my_queue.enque(temp_array2[index])
-            if 'Q ' in temp_array1:
-                index = temp_array1.index('Q ')
-                my_queue.enque(temp_array2[index])
-            if 'K ' in temp_array1:
-                index = temp_array1.index('K ')
-                my_queue.enque(temp_array2[index])
-            if 'A ' in temp_array1:
-                index = temp_array1.index('A ')
-                my_queue.enque(temp_array2[index])
+                    temp_array_card.append(card)
+                    temp_array_rank.append(next_card)
+            self.addFaceCardToQueue(temp_array_card,temp_array_rank)
             number_of_players -= 1
+        my_queue.enque(0)
 
 if __name__ == "__main__":
     new_obj = DeckUsingQueue()
@@ -58,11 +98,10 @@ if __name__ == "__main__":
         card_per_player = number_of_cards//number_of_players
         deck = my_deck.distribute(number_of_cards,number_of_players)
         new_obj.addToQueue(deck,number_of_players)
-
-        for i in range(number_of_cards):
+        while my_queue.size() != 0:
             card = my_queue.dequeue()
             print(card,end=",")
-            if number_of_cards % card_per_player == 0:
+            if my_queue.size() % (card_per_player+1) == 0:
                 print()
         break
 
