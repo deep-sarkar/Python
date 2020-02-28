@@ -31,3 +31,14 @@ class QueueUsingLinkedList:
             while temp != None:
                 print(temp.data,end=" ")
                 temp = temp.next
+    
+    def size(self):
+        temp = self.head
+        count = 0
+        if self.head == None:
+            return 0
+        while temp.next != None:
+            count += 1
+            temp = temp.next
+        return count
+        
